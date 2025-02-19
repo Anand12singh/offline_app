@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:frontend/features/auth/login_page.dart';
 import 'features/auth/pages/signup_page.dart';
 
 void main() {
@@ -15,11 +15,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Task app',
       theme: ThemeData(
-     
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        inputDecorationTheme: InputDecorationTheme(
+            contentPadding: const EdgeInsets.all(20),
+            border: const OutlineInputBorder(),
+            focusedBorder: const OutlineInputBorder(),
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red.shade400)),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade400))),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                minimumSize: const Size(double.infinity, 60),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)))),
         useMaterial3: true,
       ),
-      home: const SignupPage(),
+      home: const LoginPage(),
     );
   }
 }

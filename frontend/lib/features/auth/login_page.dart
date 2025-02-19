@@ -1,29 +1,27 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:frontend/features/auth/login_page.dart';
+import 'package:frontend/features/auth/pages/signup_page.dart';
 import 'package:gap/gap.dart';
 
-class SignupPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static MaterialPageRoute route() => MaterialPageRoute(
-        builder: (context) => SignupPage(),
+        builder: (context) => LoginPage(),
       );
-  const SignupPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
 
     // TODO: implement dispose
     super.dispose();
@@ -31,7 +29,7 @@ class _SignupPageState extends State<SignupPage> {
 
   final formKey = GlobalKey<FormState>();
 
-  void signUpUser() {
+  void signInpUser() {
     if (formKey.currentState!.validate()) {
       //store value
       print('validate');
@@ -49,23 +47,8 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Sign Up.",
+                "Sign In.",
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  hintText: 'Name',
-                ),
-                validator: (v) {
-                  if (v!.trim().isEmpty) {
-                    return 'Name fild cannot be empty!';
-                  }
-                  return null;
-                },
               ),
               const SizedBox(
                 height: 20,
@@ -100,24 +83,24 @@ class _SignupPageState extends State<SignupPage> {
               Gap(30),
               ElevatedButton(
                   onPressed: () {
-                    signUpUser();
+                    signInpUser();
                   },
                   child: Text(
-                    'Sign up',
+                    'Login',
                     style: TextStyle(color: Colors.white),
                   )),
               Gap(30),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(LoginPage.route());
+                  Navigator.of(context).push(SignupPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already have account ? ',
+                      text: 'Dont\t have Account ? ',
                       style: TextStyle(color: Colors.black, fontSize: 16),
                       children: const [
                         TextSpan(
-                            text: 'Sign In',
+                            text: 'Sign Up',
                             style: TextStyle(fontWeight: FontWeight.bold))
                       ]),
                 ),
